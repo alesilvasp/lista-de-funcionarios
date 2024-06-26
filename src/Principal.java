@@ -1,7 +1,33 @@
 import java.util.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+import funcionario.Funcionario;
 
 public class Principal {
     public static void main(String[] args) {
+
+        // 1. Criando as instâncias dos funcionários e guardando em um ArrayList
+        var bancoDeDados = new ArrayList<Funcionario>();
+        Funcionario func1 = new Funcionario("Maria", LocalDate.of(2000, 10, 18), new BigDecimal("2009.44"), "Operador");
+        Funcionario func2 = new Funcionario("João", LocalDate.of(1990, 5, 12), new BigDecimal("2284.38"), "Operador");
+        Funcionario func3 = new Funcionario("Caio", LocalDate.of(1961, 5, 2), new BigDecimal("9836.14"), "Coordenador");
+        Funcionario func4 = new Funcionario("Miguel", LocalDate.of(1988, 10, 14), new BigDecimal("19119.88"),
+                "Diretor");
+        Funcionario func5 = new Funcionario("Alice", LocalDate.of(1995, 1, 5), new BigDecimal("2234.68"),
+                "Recepcionista");
+        Funcionario func6 = new Funcionario("Heitor", LocalDate.of(1999, 11, 19), new BigDecimal("1582.72"),
+                "Operador");
+        Funcionario func7 = new Funcionario("Arthur", LocalDate.of(1993, 3, 31), new BigDecimal("4071.84"), "Contador");
+        Funcionario func8 = new Funcionario("Laura", LocalDate.of(1994, 7, 8), new BigDecimal("3017.45"), "Gerente");
+        Funcionario func9 = new Funcionario("Heloísa", LocalDate.of(2003, 5, 24), new BigDecimal("1606.85"),
+                "Eletricista");
+        Funcionario func10 = new Funcionario("Helena", LocalDate.of(1996, 9, 2), new BigDecimal("2799.93"), "Gerente");
+
+        bancoDeDados.addAll(Arrays.asList(func1, func2, func3, func4, func5, func6, func7, func8, func9, func10));
+
+        // 2. Removendo o funcionário com o nome João
+        bancoDeDados.removeIf(func -> func.nome.equals("João"));
 
     }
 }
