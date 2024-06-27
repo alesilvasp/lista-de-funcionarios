@@ -1,5 +1,7 @@
 import java.util.*;
 import java.util.Locale;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -52,6 +54,14 @@ public class Principal {
 
                 // 4. Atualizar lista de funcionários com aumento de 10%
                 bancoDeDados.forEach(func -> func.setSalario(func.salario.multiply(new BigDecimal("1.10"))));
+
+                // 5. Agrupar funcionários por funcão utilizando o MAP
+                Map <String, List<Funcionario>> equipes = bancoDeDados.stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
+
+                
+
+                
+                
                 
         }
 }

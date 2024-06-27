@@ -20,4 +20,8 @@ public class Funcionario extends Pessoa {
         this.salario = salario;
     }
 
+    public String getFuncao() {
+        return funcao;
+    }
+
 }
