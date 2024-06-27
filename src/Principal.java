@@ -50,5 +50,8 @@ public class Principal {
                                         valor.format(func.salario), func.funcao);
                 }
 
+                // 4. Atualizar lista de funcionários com aumento de 10%
+                bancoDeDados.forEach(func -> func.setSalario(func.salario.multiply(new BigDecimal("1.10"))));
+                
         }
 }
