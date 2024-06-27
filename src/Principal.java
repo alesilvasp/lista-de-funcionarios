@@ -83,6 +83,17 @@ public class Principal {
                 Stream<Funcionario> funcionariosOrdenados = bancoDeDados.stream().sorted(Comparator.comparing(Funcionario::getNome));
                 funcionariosOrdenados.forEach(funcionario -> System.out.println(funcionario.nome));
 
+                // 9. Imprimir total dos salários
+                BigDecimal totalSalarios = BigDecimal.ZERO;
+
+                for (int i = 0; i < bancoDeDados.size(); i++) {
+                        Funcionario funcAtual = bancoDeDados.get(i);
+                        totalSalarios = totalSalarios.add(funcAtual.salario);
+
+                }
+
+                System.out.println(valor.format(totalSalarios));
+
                 
         }
 }
