@@ -46,19 +46,23 @@ public class Principal {
                 DateTimeFormatter formatadorData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                 NumberFormat valor = NumberFormat.getCurrencyInstance(Locale.of("pt", "Br"));
 
-                for (Funcionario func : bancoDeDados) {
+                for (int i = 0; i < bancoDeDados.size(); i++) {
+                        Funcionario funcAtual = bancoDeDados.get(i);
                         System.out.printf("Nome: %s, Data de Nascimento: %s, Salário: %s, Função: %s%n",
-                                        func.nome, formatadorData.format(func.dataNascimento),
-                                        valor.format(func.salario), func.funcao);
+                                        funcAtual.nome, formatadorData.format(funcAtual.dataNascimento),
+                                        valor.format(funcAtual.salario), funcAtual.funcao);
                 }
 
                 // 4. Atualizar lista de funcionários com aumento de 10%
                 bancoDeDados.forEach(func -> func.setSalario(func.salario.multiply(new BigDecimal("1.10"))));
 
-                // 5. Agrupar funcionários por funcão utilizando o MAP
+                // 5. Agrupar funcionários por funcão utilizando o MAP e imprimir
                 Map <String, List<Funcionario>> equipes = bancoDeDados.stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
 
-                
+                equipes.forEach((funcao, funcionarios) -> {
+                        System.out.println(funcao);
+                        funcionarios.forEach(func -> System.out.println(func.nome));
+                });
 
                 
                 
