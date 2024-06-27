@@ -2,6 +2,7 @@ import java.util.*;
 import java.util.Locale;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.ArrayList;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -57,15 +58,24 @@ public class Principal {
                 bancoDeDados.forEach(func -> func.setSalario(func.salario.multiply(new BigDecimal("1.10"))));
 
                 // 5. Agrupar funcionários por funcão utilizando o MAP e imprimir
-                Map <String, List<Funcionario>> equipes = bancoDeDados.stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
+                Map<String, List<Funcionario>> equipes = bancoDeDados.stream()
+                                .collect(Collectors.groupingBy(Funcionario::getFuncao));
 
                 equipes.forEach((funcao, funcionarios) -> {
                         System.out.println(funcao);
                         funcionarios.forEach(func -> System.out.println(func.nome));
                 });
 
-                
-                
-                
+                // 6. Imprimir funcionários que fazem aniversário mes 10 e 12
+                Stream<Funcionario> funcionariosFiltrados = bancoDeDados.stream()
+                                .filter(func -> func.dataNascimento.getMonthValue() == 10
+                                                || func.dataNascimento.getMonthValue() == 12);
+
+                funcionariosFiltrados.forEach((funcionario) -> {
+                        System.out.printf("Funcionário: %s - Data de Nascimento: %s%n", funcionario.nome,
+                                        funcionario.dataNascimento);
+
+                });
+
         }
 }
