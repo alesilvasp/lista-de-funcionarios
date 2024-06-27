@@ -77,5 +77,12 @@ public class Principal {
 
                 });
 
+                // 7. Imprimir funcionários maiores de idade e mostrar nome e idade
+
+                // 8. Imprimir lista de funcionários por ordem alfabética
+                Stream<Funcionario> funcionariosOrdenados = bancoDeDados.stream().sorted(Comparator.comparing(Funcionario::getNome));
+                funcionariosOrdenados.forEach(funcionario -> System.out.println(funcionario.nome));
+
+                
         }
 }

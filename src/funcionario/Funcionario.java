@@ -24,4 +24,5 @@ public class Funcionario extends Pessoa {
         return funcao;
     }
 
+
 }

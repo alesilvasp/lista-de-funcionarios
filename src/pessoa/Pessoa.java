@@ -11,4 +11,8 @@ public class Pessoa {
         this.dataNascimento = dataNascimento;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
 }
