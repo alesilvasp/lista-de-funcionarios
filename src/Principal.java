@@ -1,10 +1,8 @@
 import java.util.*;
-import java.util.Locale;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.ArrayList;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -79,8 +77,11 @@ public class Principal {
 
                 // 7. Imprimir funcionários maiores de idade e mostrar nome e idade
 
+                // Não implementado...
+
                 // 8. Imprimir lista de funcionários por ordem alfabética
-                Stream<Funcionario> funcionariosOrdenados = bancoDeDados.stream().sorted(Comparator.comparing(Funcionario::getNome));
+                Stream<Funcionario> funcionariosOrdenados = bancoDeDados.stream()
+                                .sorted(Comparator.comparing(Funcionario::getNome));
                 funcionariosOrdenados.forEach(funcionario -> System.out.println(funcionario.nome));
 
                 // 9. Imprimir total dos salários
@@ -94,6 +95,14 @@ public class Principal {
 
                 System.out.println(valor.format(totalSalarios));
 
-                
+                // 10. Imprimir quantos salários mínimos ganha cada funcionário, considerando
+                // que o salário mínimo é de R$1212.00.
+                for (int i = 0; i < bancoDeDados.size(); i++) {
+                        Funcionario funcAtual = bancoDeDados.get(i);
+
+                        System.out.printf("Funcionário: %s - Quantidade de salários mínimos: %s%n", funcAtual.nome,
+                                        funcAtual.salario.divide(new BigDecimal("1212.00"), 0, RoundingMode.HALF_UP));
+
+                }
         }
 }
